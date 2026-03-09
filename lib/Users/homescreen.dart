@@ -1,3 +1,4 @@
+import 'package:farm/Models/product.dart';
 import 'package:farm/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -208,8 +209,38 @@ class CategoryCard extends StatelessWidget {
   }
 }
 
-class PopularItemsSection extends StatelessWidget {
+class PopularItemsSection extends StatefulWidget {
   const PopularItemsSection({super.key});
+
+  @override
+  State<PopularItemsSection> createState() => _PopularItemsSectionState();
+}
+
+class _PopularItemsSectionState extends State<PopularItemsSection> {
+  List<Product> products = [];
+  bool isLoading = true;
+  String errorMessage = '';
+
+  @override
+  void initState() {
+    super.initState();
+    loadProducts();
+  }
+
+  Future<void> loadProducts() async {
+    try {
+      final data = await ProductService.fetchProducts();
+      setState(() {
+        products = data;
+        isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        errorMessage = 'Error: $e';
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -223,31 +254,36 @@ class PopularItemsSection extends StatelessWidget {
         const SizedBox(height: 12),
         SizedBox(
           height: 220,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: const [
-              ItemCard(
-                image:
-                    'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
-                name: "Chicken Breast Boneless - 500g",
-                price: "195",
-                originalPrice: "255",
-              ),
-              ItemCard(
-                image:
-                    'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
-                name: "Chicken Small Piece - 500g",
-                price: "120",
-                originalPrice: "175",
-              ),
-              ItemCard(
-                image:
-                    'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
-                name: "Chicken Leg piece - 500g",
-                price: "255",
-              ),
-            ],
-          ),
+          child: isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : errorMessage.isNotEmpty
+              ? Center(child: Text(errorMessage))
+              : products.isEmpty
+              ? const Center(child: Text('No products available'))
+              : ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: products.length,
+                  itemBuilder: (context, index) {
+                    final product = products[index];
+                    // Parse price to remove '.00' if it ends with it
+                    String priceStr = product.price;
+                    if (priceStr.endsWith('.00')) {
+                      priceStr = priceStr.substring(0, priceStr.length - 3);
+                    }
+
+                    // For emulator, 127.0.0.1 might need to be replaced with 10.0.2.2 for image URL as well
+                    // But keeping it as provided by the user format
+                    String imageUrl = product.image.isNotEmpty
+                        ? product.image
+                        : 'https://via.placeholder.com/150';
+
+                    return ItemCard(
+                      image: imageUrl,
+                      name: product.name,
+                      price: priceStr,
+                    );
+                  },
+                ),
         ),
       ],
     );

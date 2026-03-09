@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'Welcome_section/splash.dart';
 
 
@@ -20,7 +19,6 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
       ),
       home: const SplashScreen(),
-
     );
   }
 }
