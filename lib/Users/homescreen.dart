@@ -1,7 +1,6 @@
 import 'package:farm/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
-
 class ChickenDashboard extends StatefulWidget {
   const ChickenDashboard({super.key});
 
@@ -38,11 +37,7 @@ class _ChickenDashboardState extends State<ChickenDashboard> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
-                  Icons.location_on,
-                  color: Colors.red,
-                  size: 18,
-                ),
+                const Icon(Icons.location_on, color: Colors.red, size: 18),
 
                 const SizedBox(width: 4),
 
@@ -52,10 +47,7 @@ class _ChickenDashboardState extends State<ChickenDashboard> {
                   children: const [
                     Text(
                       "Singanallur,",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
                     Text(
                       "Coimbatore",
@@ -114,7 +106,6 @@ class _ChickenDashboardState extends State<ChickenDashboard> {
   }
 }
 
-
 class PromoBannerWidget extends StatelessWidget {
   const PromoBannerWidget({super.key});
 
@@ -122,16 +113,10 @@ class PromoBannerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
-        child: Image.asset(
-          'assets/promo.png',
-          fit: BoxFit.cover,
-          height: 180,
-        ),
+        child: Image.asset('assets/promo.png', fit: BoxFit.cover, height: 180),
       ),
     );
   }
@@ -171,18 +156,9 @@ class CategoriesSection extends StatelessWidget {
                 image: 'assets/chicken.png',
                 isPopular: true,
               ),
-              CategoryCard(
-                title: "Boneless",
-                image: 'assets/boneless.png',
-              ),
-              CategoryCard(
-                title: "Leg Piece",
-                image: 'assets/legpiece.png',
-              ),
-              CategoryCard(
-                title: "Skin Less",
-                image: 'assets/skinless.png',
-              ),
+              CategoryCard(title: "Boneless", image: 'assets/boneless.png'),
+              CategoryCard(title: "Leg Piece", image: 'assets/legpiece.png'),
+              CategoryCard(title: "Skin Less", image: 'assets/skinless.png'),
             ],
           ),
         ),
@@ -196,7 +172,12 @@ class CategoryCard extends StatelessWidget {
   final String image;
   final bool isPopular;
 
-  const CategoryCard({super.key, required this.title, required this.image, this.isPopular = false});
+  const CategoryCard({
+    super.key,
+    required this.title,
+    required this.image,
+    this.isPopular = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -217,7 +198,7 @@ class CategoryCard extends StatelessWidget {
             title,
             style: TextStyle(
               fontSize: 14,
-              color:Colors.black,
+              color: Colors.black,
               fontWeight: isPopular ? FontWeight.bold : FontWeight.normal,
             ),
           ),
@@ -246,19 +227,22 @@ class PopularItemsSection extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             children: const [
               ItemCard(
-                image: 'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
+                image:
+                    'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
                 name: "Chicken Breast Boneless - 500g",
                 price: "195",
                 originalPrice: "255",
               ),
               ItemCard(
-                image: 'https://images.unsplash.com/photo-1621251347628-86d1_0696_9879?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmF3JTIwY2hpY2tlbnxlbnwwfHwwfHx8MA%3D%3D',
+                image:
+                    'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
                 name: "Chicken Small Piece - 500g",
                 price: "120",
                 originalPrice: "175",
               ),
               ItemCard(
-                image: 'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
+                image:
+                    'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
                 name: "Chicken Leg piece - 500g",
                 price: "255",
               ),
@@ -276,7 +260,13 @@ class ItemCard extends StatelessWidget {
   final String price;
   final String? originalPrice;
 
-  const ItemCard({super.key, required this.image, required this.name, required this.price, this.originalPrice});
+  const ItemCard({
+    super.key,
+    required this.image,
+    required this.name,
+    required this.price,
+    this.originalPrice,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -286,7 +276,13 @@ class ItemCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 4, offset: const Offset(0, 2))],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -294,20 +290,39 @@ class ItemCard extends StatelessWidget {
           Stack(
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
-                child: Image.network(image, height: 110, width: double.infinity, fit: BoxFit.cover),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(15),
+                ),
+                child: Image.network(
+                  image,
+                  height: 110,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
               Positioned(
                 bottom: -1,
                 right: 8,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(color: const Color(0xFFE92A2C), borderRadius: BorderRadius.circular(20)),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFE92A2C),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                   child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text("+", style: TextStyle(color: Colors.white, fontSize: 16)),
-                      Text("Add", style: TextStyle(color: Colors.white, fontSize: 12)),
+                      Text(
+                        "+",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      Text(
+                        "Add",
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
                     ],
                   ),
                 ),
@@ -320,14 +335,35 @@ class ItemCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 8),
-                Text(name, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500), maxLines: 2, overflow: TextOverflow.ellipsis),
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    Text("₹$price", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    Text(
+                      "₹$price",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     if (originalPrice != null) ...[
                       const SizedBox(width: 4),
-                      Text("₹$originalPrice", style: const TextStyle(fontSize: 12, color: Colors.grey, decoration: TextDecoration.lineThrough)),
+                      Text(
+                        "₹$originalPrice",
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      ),
                     ],
                   ],
                 ),
@@ -360,7 +396,8 @@ class TopDealsSection extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             children: const [
               DealCard(
-                image: 'https://images.unsplash.com/photo-1621251347628-86d1_0696_9879?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmF3JTIwY2hpY2tlbnxlbnwwfHwwfHx8MA%3D%3D',
+                image:
+                    'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
                 name: "Chicken Big piece - 500g",
                 price: "255",
                 originalPrice: "300",
@@ -369,7 +406,8 @@ class TopDealsSection extends StatelessWidget {
                 tagColor: Color(0xFF32C71C),
               ),
               DealCard(
-                image: 'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
+                image:
+                    'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
                 name: "Chicken Breast & Leg piece - 500g",
                 price: "255",
                 originalPrice: "300",
@@ -394,7 +432,16 @@ class DealCard extends StatelessWidget {
   final String dealTag;
   final Color tagColor;
 
-  const DealCard({super.key, required this.image, required this.name, required this.price, required this.originalPrice, required this.discount, required this.dealTag, required this.tagColor});
+  const DealCard({
+    super.key,
+    required this.image,
+    required this.name,
+    required this.price,
+    required this.originalPrice,
+    required this.discount,
+    required this.dealTag,
+    required this.tagColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -404,42 +451,96 @@ class DealCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 4, offset: const Offset(0, 2))],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
-            child: Image.network(image, height: 90, width: double.infinity, fit: BoxFit.cover),
+            child: Image.network(
+              image,
+              height: 90,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500), maxLines: 1, overflow: TextOverflow.ellipsis),
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        Text("₹$price", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        Text(
+                          "₹$price",
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         const SizedBox(width: 4),
-                        Text("₹$originalPrice", style: const TextStyle(fontSize: 12, color: Colors.grey, decoration: TextDecoration.lineThrough)),
+                        Text(
+                          "₹$originalPrice",
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
                         const SizedBox(width: 4),
-                        Text(discount, style: const TextStyle(fontSize: 12, color: Color(0xFF32C71C), fontWeight: FontWeight.bold)),
+                        Text(
+                          discount,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF32C71C),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
-                    const Icon(Icons.favorite_border, color: Color(0xFFE92A2C), size: 18),
+                    const Icon(
+                      Icons.favorite_border,
+                      color: Color(0xFFE92A2C),
+                      size: 18,
+                    ),
                   ],
                 ),
                 const SizedBox(height: 8),
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 4),
-                  decoration: BoxDecoration(color: tagColor, borderRadius: BorderRadius.circular(5)),
-                  child: Text(dealTag, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold)),
+                  decoration: BoxDecoration(
+                    color: tagColor,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Text(
+                    dealTag,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -472,18 +573,28 @@ class FirstOrderPromo extends StatelessWidget {
               children: [
                 const Text(
                   "₹50 OFF",
-                  style: TextStyle(color: Color(0xFFE92A2C), fontSize: 26, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: Color(0xFFE92A2C),
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const Text(
                   "ON FIRST CHICKEN ORDER",
-                  style: TextStyle(color: Color(0xFFE92A2C), fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                    color: Color(0xFFE92A2C),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
                 const SizedBox(height: 12),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF9E01),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
                   child: const Row(
                     mainAxisSize: MainAxisSize.min,
@@ -517,9 +628,22 @@ class FirstOrderPromo extends StatelessWidget {
                     ),
                     child: const Column(
                       children: [
-                        Text("LIMITED", style: TextStyle(color: Colors.white, fontSize: 8)),
-                        Text("TIME", style: TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold)),
-                        Text("OFFER", style: TextStyle(color: Colors.white, fontSize: 8)),
+                        Text(
+                          "LIMITED",
+                          style: TextStyle(color: Colors.white, fontSize: 8),
+                        ),
+                        Text(
+                          "TIME",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 8,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "OFFER",
+                          style: TextStyle(color: Colors.white, fontSize: 8),
+                        ),
                       ],
                     ),
                   ),
