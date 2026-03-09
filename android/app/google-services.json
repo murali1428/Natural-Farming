@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "46065890201",
+    "project_id": "farm-69926",
+    "storage_bucket": "farm-69926.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46065890201:android:0fbc7aca8e8695d94a1908",
+        "android_client_info": {
+          "package_name": "com.example.farm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46065890201-c7sbeel08pdpfhse5m6s2nlpk6nbgr32.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN7YLs5z5tfIA3BPS2cl5F5dsK7AsAXc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46065890201-c7sbeel08pdpfhse5m6s2nlpk6nbgr32.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
