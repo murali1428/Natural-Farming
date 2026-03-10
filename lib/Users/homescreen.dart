@@ -334,6 +334,28 @@ class ItemCard extends StatelessWidget {
                   height: 110,
                   width: double.infinity,
                   fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 110,
+                      width: double.infinity,
+                      color: Colors.grey[200],
+                      child: const Icon(
+                        Icons.image_not_supported,
+                        color: Colors.grey,
+                      ),
+                    );
+                  },
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Container(
+                      height: 110,
+                      width: double.infinity,
+                      color: Colors.grey[100],
+                      child: const Center(
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                    );
+                  },
                 ),
               ),
               Positioned(
@@ -433,7 +455,7 @@ class TopDealsSection extends StatelessWidget {
             children: const [
               DealCard(
                 image:
-                    'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
+                    'https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1000&auto=format&fit=crop',
                 name: "Chicken Big piece - 500g",
                 price: "255",
                 originalPrice: "300",
@@ -443,7 +465,7 @@ class TopDealsSection extends StatelessWidget {
               ),
               DealCard(
                 image:
-                    'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
+                    'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1000&auto=format&fit=crop',
                 name: "Chicken Breast & Leg piece - 500g",
                 price: "255",
                 originalPrice: "300",
@@ -649,7 +671,7 @@ class FirstOrderPromo extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 Image.network(
-                  'https://media.istockphoto.com/id/1149793144/photo/raw-chicken-carcass-and-chicken-parts-and-products-top-view-on-a-cutting-board.jpg?s=612x612&w=0&k=20&c=qY6oMh5bB7O_YfG7YqH3zK3H2Gk5IuX1xRkP_G3q_20=',
+                  'https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1000&auto=format&fit=crop',
                   height: 100,
                   fit: BoxFit.contain,
                 ),
